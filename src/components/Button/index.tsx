@@ -11,7 +11,7 @@ export const Button = ({ children, loading = false, ...rest }: IProps) => {
           flex items-center justify-center gap-4 px-3 rounded-md font-semibold
           text-md cursor-pointer transition-opacity hover:opacity-80
           bg-green-600
-          h-10
+          min-h-10
           max-w-[260px]
         "
       {...rest}
