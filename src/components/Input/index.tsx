@@ -21,6 +21,8 @@ export const Input = ({ name, label, register, errors, ...props }: IProps) => {
     </Tooltip>
   )
 
+  const sizeText =
+    errors?.message && errors.message.length > 30 ? 'text-sm' : 'text-md'
   const labelInfo = errors?.message ? `${errors.message}!` : `${label}:`
   const labelClass = errors?.message ? ' text-amber-400' : 'text-gray-300'
   const opacityClass = errors?.message ? 'opacity-100' : 'opacity-0'
@@ -31,7 +33,9 @@ export const Input = ({ name, label, register, errors, ...props }: IProps) => {
   return (
     <div className="flex flex-col w-full items-start">
       {label && (
-        <p className={`${labelClass} font-semibold self-start mb-1`}>
+        <p
+          className={`${labelClass} ${sizeText} font-semibold self-start mb-1`}
+        >
           {labelInfo}
         </p>
       )}
