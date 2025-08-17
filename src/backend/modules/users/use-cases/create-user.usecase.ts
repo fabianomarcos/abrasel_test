@@ -3,6 +3,7 @@ import { User, UserOrm } from '../entities/user.entity'
 import { IUserRepository } from '../repositories/IUserRepository'
 import { BadRequestError } from '@/backend/errors/bad-request'
 import { validatePassword } from '@/backend/pipes/validate-password'
+import { FieldValidator } from '@/backend/errors/field-validator'
 
 export class CreateUserUseCase {
   constructor(
@@ -11,6 +12,9 @@ export class CreateUserUseCase {
   ) {}
 
   async execute(input: UserOrm): Promise<User> {
+    const { email, role, name, password } = input
+    FieldValidator.validateRequiredFields({ email, role, name, password })
+
     const existingUser = await this.usersRepository.listByEmail(input.email)
     if (existingUser) throw new BadRequestError('User already exists')
 
