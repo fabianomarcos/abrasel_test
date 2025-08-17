@@ -8,7 +8,6 @@ import { useEffect } from 'react'
 
 export default function Home() {
   const { user } = userStore()
-  console.log('user: ', user, localStorage.getItem(StorageEnum.user))
 
   useEffect(() => {
     const fetchData = async () => {
