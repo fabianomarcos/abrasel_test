@@ -9,10 +9,12 @@ export class FieldValidator {
     Object.entries(fields).forEach(([item, value]) => {
       const str = `${value}`.trim()
       const emptyField = str === '' || str === 'undefined' || str === 'null'
-      if (emptyField) errors.push(`Field '${item}' is empty or invalid`)
+      if (emptyField) errors.push(item)
     })
 
     if (errors.length === 0) return
-    throw new BadRequestError(message || `${errors.join(', ')}`)
+    throw new BadRequestError(
+      message || `Some fields are invalids: ${errors.join(', ')}`,
+    )
   }
 }
