@@ -2,7 +2,7 @@
     "rest-client.environmentVariables": {
         "$shared": {
             "baseUrlDev": "http://localhost:3000/api",
-            "baseUrlProd": ""
+            "baseUrlProd": "https://abrasel-test.vercel.app/api"
         },
     }
 }
