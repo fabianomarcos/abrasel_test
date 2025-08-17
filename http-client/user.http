@@ -1,0 +1,49 @@
+@token={{login.response.body.access_token}}
+################################################################################
+# @name login
+POST {{baseUrlDev}}/session HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "fabiano@gmail.com",
+    "password": "12345678@Ab"
+}
+
+################################################################################
+# @name list_users
+GET {{baseUrlDev}}/users?page=1&perPage=20 HTTP/1.1
+Authorization: Bearer {{token}}
+
+################################################################################
+# @name create_user
+POST {{baseUrlDev}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Fabiano Marcos",
+    "email": "fabiano@gmail.com",
+    "password": "12345678@Ab",
+    "role": "ADMIN",
+    "active": true
+}
+
+
+################  PRODUCTION  ##################################################
+################  PRODUCTION  ##################################################
+################  PRODUCTION  ##################################################
+
+# @name list_users
+GET {{baseUrlProd}}/users?page=1&perPage=20 HTTP/1.1
+
+################################################################################
+# @name create_user
+POST {{baseUrlProd}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Fabiano Marcos",
+    "email": "fabiano@gmail.com",
+    "password": "12345678@Ab",
+    "role": "ADMIN",
+    "active": true
+}

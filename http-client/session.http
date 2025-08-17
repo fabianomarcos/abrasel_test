@@ -1,0 +1,23 @@
+################################################################################
+# @name list_users
+POST {{baseUrlDev}}/session HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "fabiano@gmail.com",
+    "password": "12345678@Ab"
+}
+
+
+################  PRODUCTION  ##################################################
+################  PRODUCTION  ##################################################
+################  PRODUCTION  ##################################################
+
+# @name list_users
+POST {{baseUrlProd}}/session HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "fabiano@gmail.com",
+    "password": "123456"
+}
