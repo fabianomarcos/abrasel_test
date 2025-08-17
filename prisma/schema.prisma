@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum RoleType {
+  ADMIN
+  USER
+}
+
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  password   String
+  role       RoleType
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  active     Boolean  @default(true)
+  Address    Address?
+
+  @@map("users")
+}
+
+model Address {
+  id         String   @id @default(uuid())
+  street     String
+  number     String
+  city       String
+  state      String
+  zip_code   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user_id String @unique
+  user    User   @relation(fields: [user_id], references: [id])
+
+  @@map("addresses")
+}
