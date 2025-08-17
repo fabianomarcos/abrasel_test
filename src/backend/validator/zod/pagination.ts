@@ -4,3 +4,8 @@ export const paginationSchema = z.object({
   page: z.string().min(1),
   perPage: z.string().min(1),
 })
+
+export type PaginationType = {
+  page: string
+  perPage: string
+}
