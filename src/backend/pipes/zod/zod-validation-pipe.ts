@@ -1,6 +1,6 @@
 import { ZodError, ZodType } from 'zod'
 import { fromZodError } from 'zod-validation-error'
-import { BadRequestError } from '../errors/bad-request'
+import { BadRequestError } from '@/backend/errors/bad-request'
 
 export function validateWithPipe<T>(schema: ZodType<T>, data: unknown): T {
   try {

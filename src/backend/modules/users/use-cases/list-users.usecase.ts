@@ -4,8 +4,8 @@ import { IUserRepository } from '../repositories/IUserRepository'
 import {
   paginationSchema,
   PaginationType,
-} from '@/backend/validator/zod/pagination'
-import { validateWithPipe } from '@/backend/pipes/zod-validation-pipe'
+} from '@/backend/pipes/zod/pagination'
+import { validateWithPipe } from '@/backend/pipes/zod/zod-validation-pipe'
 
 export class ListUsersUseCase {
   constructor(private readonly usersRepository: IUserRepository) {}
