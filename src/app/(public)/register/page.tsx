@@ -2,7 +2,6 @@
 import Link from 'next/link'
 
 import { useValidateSchema } from '@/hooks/use-schema-validator'
-// import { useAuth } from '@/hooks/AuthContext'
 import {
   registerFormSchema,
   RegisterFormSchemaType,
@@ -11,7 +10,7 @@ import {
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 import { Loader } from '@/components/Loader'
-import { Info } from '@/components/Icons'
+import { ROUTES } from '@/routes'
 
 export default function RegisterPage() {
   const { register, errors, handleSubmit, isSubmitting } =
@@ -25,7 +24,7 @@ export default function RegisterPage() {
     <div className="flex bg-[url('/login_background.webp')] bg-cover bg-center">
       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br bg-gray-100 opacity-40" />
       <div className="flex justify-center items-center h-screen p-8">
-        {/* {!isSubmitting && <Loader />} */}
+        {isSubmitting && <Loader />}
         <form
           className="gap-4 flex p-8 justify-center flex-col w-full h-full"
           onSubmit={handleSubmit(signUp)}
@@ -62,8 +61,7 @@ export default function RegisterPage() {
             label="Confirmar Senha"
           />
           <Button type="submit">Cadastrar</Button>
-          <Link href="/forgot-password">Esqueci minha senha.</Link>
-          <Link href="/register">Registrar uma conta.</Link>
+          <Link href={ROUTES.PUBLIC.LOGIN}>Já tenho uma conta.</Link>
         </form>
       </div>
     </div>
