@@ -5,13 +5,14 @@ export class FieldValidator {
     fields: T,
     message?: string,
   ): void {
-    const hasEmptyField = Object.entries(fields).some(([, value]) => {
+    const errors: string[] = []
+    Object.entries(fields).forEach(([item, value]) => {
       const str = `${value}`.trim()
-      return str === '' || str === 'undefined' || str === 'null'
+      const emptyField = str === '' || str === 'undefined' || str === 'null'
+      if (emptyField) errors.push(`Field '${item}' is empty or invalid`)
     })
 
-    if (hasEmptyField) {
-      throw new BadRequestError(message || 'Some fields are empty or invalid')
-    }
+    if (errors.length === 0) return
+    throw new BadRequestError(message || `${errors.join(', ')}`)
   }
 }
