@@ -2,23 +2,22 @@
 import Link from 'next/link'
 
 import { useValidateSchema } from '@/hooks/use-schema-validator'
-import {
-  registerFormSchema,
-  RegisterFormSchemaType,
-} from '@/schemas/register-form-schema'
+import { registerFormSchema } from '@/schemas/register-form-schema'
 
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 import { Loader } from '@/components/Loader'
 import { ROUTES } from '@/routes'
+import { useSignUp } from './hooks/use-sign-up'
+import { SignUpService } from '@/services/sign-up'
+
+const signUpService = new SignUpService()
 
 export default function RegisterPage() {
   const { register, errors, handleSubmit, isSubmitting } =
     useValidateSchema(registerFormSchema)
 
-  const signUp = (data: RegisterFormSchemaType) => {
-    console.log('data: ', data)
-  }
+  const { signUp } = useSignUp({ signUpService })
 
   return (
     <div className="flex bg-[url('/login_background.webp')] bg-cover bg-center">

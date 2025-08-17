@@ -5,19 +5,20 @@ import { ROUTES } from '@/routes'
 import { signInService } from '@/services/sign-in'
 import { tokenStore } from '@/stores/token-store'
 import { userStore } from '@/stores/user-store'
+import { Toast } from '@/components/Toast'
 
 export default function useSignIn() {
   const router = useRouter()
   const { setToken } = tokenStore()
   const { setUser } = userStore()
 
-  const initialValueErros = { email: false, pass: false }
-  const [errors, setErrors] = useState(initialValueErros)
-
   const signIn = useCallback(
     async ({ email, password }: { email: string; password: string }) => {
       if (!email || !password) {
-        setErrors({ pass: !password, email: !email })
+        Toast({
+          content: 'Preencha todos os campos',
+          options: { type: 'error' },
+        })
         return
       }
 
@@ -34,6 +35,5 @@ export default function useSignIn() {
 
   return {
     signIn,
-    errors,
   }
 }
