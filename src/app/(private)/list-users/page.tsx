@@ -42,7 +42,7 @@ export default function ListUsersPage() {
   const { user } = userStore()
 
   useEffect(() => {
-    if (user?.role === 'ADMIN') router.push(ROUTES.PRIVATE.HOME)
+    if (user?.role !== 'ADMIN') router.push(ROUTES.PRIVATE.HOME)
   }, [router, user?.role])
 
   return (
