@@ -9,9 +9,9 @@ import { Input } from '@/components/Input'
 import { Loader } from '@/components/Loader'
 import { ROUTES } from '@/routes'
 import { useSignUp } from './hooks/use-sign-up'
-import { SignUpService } from '@/services/sign-up'
+import { UserService } from '@/services/user'
 
-const signUpService = new SignUpService()
+const signUpService = new UserService()
 
 export default function RegisterPage() {
   const { register, errors, handleSubmit, isSubmitting } =

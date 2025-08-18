@@ -2,14 +2,11 @@ import { useRouter } from 'next/navigation'
 
 import { ROUTES } from '@/routes'
 import { Toast } from '@/components/Toast'
-import {
-  IBodySignUp,
-  SignUpServiceContract,
-} from '@/services/sign-up/contracts'
-import { ERRORS, LanguageType } from '@/translator'
+import { IBodySignUp, UserServiceContract } from '@/services/user/contracts'
+import { ERRORS } from '@/translator'
 
 type SignUpProps = {
-  signUpService: SignUpServiceContract
+  signUpService: UserServiceContract
 }
 
 export function useSignUp({ signUpService }: SignUpProps) {
