@@ -1,26 +1,31 @@
 'use client'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { Input } from '@/components/Input'
+import { Save } from '@/components/Icons'
+import { addressFormSchema } from '@/schemas/address-form-schema'
+import { Loader } from '@/components/Loader'
+import { Button } from '@/components/Button'
+
 import {
   cepPattern,
   handleKeyUpCep,
   sanitizeCEP,
 } from '@/utils/formatting/zip-code'
-import { useValidateSchema } from '@/hooks/use-schema-validator'
-import { addressFormSchema } from '@/schemas/address-form-schema'
-import { Loader } from '@/components/Loader'
+import { UserService } from '@/services/user'
 import { useGetCep } from '../hooks/use-get-cep'
-import { useCreateAddress } from '../hooks/use-create-address'
 import { AddressService } from '@/services/address'
-import { Button } from '@/components/Button'
-import { Save } from '@/components/Icons'
+import { useGetUserById } from '../hooks/use-get-user-by-id'
+import { useCreateAddress } from '../hooks/use-create-address'
+import { useValidateSchema } from '@/hooks/use-schema-validator'
 
 const addressService = new AddressService()
+const userService = new UserService()
 
 export const AddressForm = () => {
   const [cep, setCep] = useState('')
 
   const { create } = useCreateAddress({ addressService })
+  const { user } = useGetUserById({ userService })
   const { register, errors, handleSubmit, isSubmitting, setValue } =
     useValidateSchema(addressFormSchema)
 
@@ -31,6 +36,16 @@ export const AddressForm = () => {
 
   const { dataCep, blockFields, loading } = useGetCep(cep)
   const { city, state, street, neighborhood } = dataCep
+
+  useEffect(() => {
+    if (user?.user?.Address?.zip_code) {
+      setValue('zip_code', user.user.Address.zip_code || '', {
+        shouldValidate: true,
+      })
+      setCep(user?.user?.Address?.zip_code || '')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     if (blockFields) {

@@ -11,7 +11,6 @@ export interface ICep {
 }
 
 export const useGetCep = (cep: string) => {
-  console.log('cep: ', cep)
   const [loading, setLoading] = useState(false)
   const [dataCep, setDataCep] = useState({} as ICep)
   const [blockFields, setBlockFields] = useState(false)
@@ -27,6 +26,7 @@ export const useGetCep = (cep: string) => {
       setLoading(false)
     } catch (error) {
       setLoading(false)
+      setBlockFields(false)
       console.error('error: ', error)
       alert(
         'Ocorreu algum erro ao buscar o cep, por favor, preencha manualmente.',
