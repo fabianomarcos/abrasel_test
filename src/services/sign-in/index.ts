@@ -1,13 +1,20 @@
 import { ResponseType } from '../types'
 import api, { treatmentForErrors } from '../api'
-import { IBodySignIn, IResponseGetMe, IResponseSignIn } from './types'
+import {
+  IBodySignIn,
+  IResponseGetMe,
+  IResponseSignIn,
+  SignInServiceContract,
+} from './contracts'
 
-export const signInService = ({
-  email,
-  password,
-}: IBodySignIn): Promise<ResponseType<IResponseSignIn>> => {
-  const request = api.post(`session`, { email, password })
-  return treatmentForErrors(request)
+export class SignInService implements SignInServiceContract {
+  async signIn({
+    email,
+    password,
+  }: IBodySignIn): Promise<ResponseType<IResponseSignIn>> {
+    const request = api.post(`session`, { email, password })
+    return treatmentForErrors(request)
+  }
 }
 
 export const getMeService = (

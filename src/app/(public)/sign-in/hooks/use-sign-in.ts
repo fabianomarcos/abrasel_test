@@ -1,13 +1,18 @@
+import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
-import { useCallback, useState } from 'react'
 
 import { ROUTES } from '@/routes'
-import { signInService } from '@/services/sign-in'
 import { tokenStore } from '@/stores/token-store'
 import { userStore } from '@/stores/user-store'
 import { Toast } from '@/components/Toast'
+import { SignInServiceContract } from '@/services/sign-in/contracts'
+import { ERRORS } from '@/translator'
 
-export default function useSignIn() {
+type SignInProps = {
+  signInService: SignInServiceContract
+}
+
+export const useSignIn = ({ signInService }: SignInProps) => {
   const router = useRouter()
   const { setToken } = tokenStore()
   const { setUser } = userStore()
@@ -22,15 +27,26 @@ export default function useSignIn() {
         return
       }
 
-      const [data, error] = await signInService({ email, password })
+      const [data, error] = await signInService.signIn({ email, password })
 
-      if (!data || error) return
+      if (!data || error) {
+        const content = ERRORS(error?.message)
+        Toast({
+          content,
+          options: { type: 'error' },
+        })
+        return
+      }
 
       setToken(data.access_token)
       setUser(data.user)
       router.push(ROUTES.PRIVATE.HOME)
+      Toast({
+        content: 'Login realizado com sucesso! Seja bem vindo!',
+        options: { type: 'success' },
+      })
     },
-    [router, setToken, setUser],
+    [router, setToken, setUser, signInService],
   )
 
   return {

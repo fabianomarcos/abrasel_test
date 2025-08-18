@@ -6,15 +6,18 @@ import { loginFormSchema } from '@/schemas/login-form-schema'
 import { useValidateSchema } from '@/hooks/use-schema-validator'
 
 import { Input } from '@/components/Input'
-import useSignIn from './hooks/use-sign-in'
 import { Button } from '@/components/Button'
 import { Loader } from '@/components/Loader'
+import { useSignIn } from './hooks/use-sign-in'
+import { SignInService } from '@/services/sign-in'
+
+const signInService = new SignInService()
 
 export default function LoginPage() {
   const { register, errors, handleSubmit, isSubmitting } =
     useValidateSchema(loginFormSchema)
 
-  const { signIn } = useSignIn()
+  const { signIn } = useSignIn({ signInService })
 
   return (
     <div className="flex bg-[url('/login_background.webp')] bg-cover bg-center">
