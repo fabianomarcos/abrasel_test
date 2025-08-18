@@ -1,3 +1,4 @@
+import { UserListResponse } from '@/app/(private)/list-users/hooks/use-get-users'
 import { IError } from '@/backend/interfaces'
 
 export interface IBodySignUp {
@@ -43,6 +44,7 @@ export interface IResponseSignUp {
 }
 
 export type UserServiceContract = {
+  delete: (userId: string) => Promise<[void, IError | null]>
   signUp: (
     body: IBodySignUp,
   ) => Promise<[{ user: IUser } | null, IError | null]>
@@ -53,4 +55,11 @@ export type UserServiceContract = {
   listById: (
     user_id: string,
   ) => Promise<[{ user: IUser } | null, IError | null]>
+  list: ({
+    page,
+    perPage,
+  }: {
+    page: number
+    perPage: number
+  }) => Promise<[{ users: UserListResponse } | null, IError | null]>
 }

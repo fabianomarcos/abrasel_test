@@ -5,6 +5,7 @@ export const ROUTES = {
   PRIVATE: {
     HOME: '/',
     PROFILE: createPageUrl('profile'),
+    USERS: createPageUrl('list-users'),
   },
 
   PUBLIC: {
