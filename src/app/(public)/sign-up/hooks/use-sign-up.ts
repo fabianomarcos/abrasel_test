@@ -6,6 +6,7 @@ import {
   IBodySignUp,
   SignUpServiceContract,
 } from '@/services/sign-up/contracts'
+import { ERRORS, LanguageType } from '@/translator'
 
 type SignUpProps = {
   signUpService: SignUpServiceContract
@@ -14,12 +15,16 @@ type SignUpProps = {
 export function useSignUp({ signUpService }: SignUpProps) {
   const router = useRouter()
 
-  const signUp = async (body: IBodySignUp) => {
-    console.log('body: ', body)
-    const [data, error] = await signUpService.signUp(body)
+  const signUp = async ({ email, name, password }: IBodySignUp) => {
+    const [data, error] = await signUpService.signUp({ email, name, password })
+    console.log('error: ', error)
 
     if (error) {
-      Toast({ content: 'Erro', options: { type: 'error' } })
+      const errorMessage = error?.message.includes('Some fields are invalids:')
+        ? 'Some fields are invalids:'
+        : error?.message
+      const message = ERRORS(errorMessage)
+      Toast({ content: message, options: { type: 'error' } })
       return
     }
 

@@ -3,7 +3,6 @@ import { IError } from '@/backend/interfaces'
 export interface IBodySignUp {
   name: string
   password: string
-  confirmPassword: string
   email: string
 }
 
