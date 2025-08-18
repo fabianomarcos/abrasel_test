@@ -1,3 +1,4 @@
+'use client'
 import jwt from 'jsonwebtoken'
 import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
