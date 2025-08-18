@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import { ROUTES } from '@/routes'
 import { userStore } from '@/stores/user-store'
-import { Linkedin, Users } from '@/components/Icons'
+import { Linkedin, User, Users } from '@/components/Icons'
 import { MissionVisionAndValues } from '../(mission-vision-values)'
 
 export const MainPage = () => {
@@ -31,13 +31,23 @@ export const MainPage = () => {
       </div>
 
       <div className="flex gap-4 items-center flex-col sm:flex-row">
-        {!user?.address_id && (
+        <Link
+          className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+          href={`${ROUTES.PRIVATE.PROFILE}/${user?.id}`}
+        >
+          <User size={24} />
+          Atualizar meu perfil
+        </Link>
+
+        {user?.role === 'ADMIN' && (
           <Link
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href={`${ROUTES.PRIVATE.PROFILE}/${user?.id}`}
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors
+            flex gap-4 items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent
+            font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[200px]"
+            href={`${ROUTES.PRIVATE.USERS}`}
           >
-            <Users size={24} />
-            Atualizar meu perfil
+            <Users size={22} />
+            Listar Usuários
           </Link>
         )}
 
