@@ -4,6 +4,7 @@ const createPageUrl = (base: string, sub_base: string = '') =>
 export const ROUTES = {
   PRIVATE: {
     HOME: '/',
+    PROFILE: createPageUrl('profile'),
   },
 
   PUBLIC: {
