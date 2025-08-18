@@ -16,12 +16,24 @@ export interface IUser {
   updated_at: string
 }
 
+export interface IBodyUpdateUser {
+  id: string
+  name: string
+  email: string
+  current_password: string | null
+  password?: string | null
+}
+
 export interface IResponseSignUp {
   user: IUser
 }
 
-export type SignUpServiceContract = {
+export type UserServiceContract = {
   signUp: (
     body: IBodySignUp,
+  ) => Promise<[{ user: IUser } | null, IError | null]>
+  update: (
+    body: IBodyUpdateUser,
+    user_id: string,
   ) => Promise<[{ user: IUser } | null, IError | null]>
 }

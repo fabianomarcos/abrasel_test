@@ -1,23 +1,25 @@
-import { ResponseType } from '../types'
 import { IError } from '@/backend/interfaces'
 import api, { treatmentForErrors } from '../api'
 import {
   IBodySignUp,
-  IResponseSignUp,
+  IBodyUpdateUser,
   IUser,
-  SignUpServiceContract,
+  UserServiceContract,
 } from './contracts'
 
-export const getMeService = (): Promise<ResponseType<IResponseSignUp>> => {
-  const request = api.get(`/users/me`)
-  return treatmentForErrors(request)
-}
-
-export class SignUpService implements SignUpServiceContract {
+export class UserService implements UserServiceContract {
   async signUp(
     body: IBodySignUp,
   ): Promise<[{ user: IUser } | null, IError | null]> {
     const request = api.post(`users`, body)
+    return treatmentForErrors(request)
+  }
+
+  async update(
+    body: IBodyUpdateUser,
+    user_id: string,
+  ): Promise<[{ user: IUser } | null, IError | null]> {
+    const request = api.put(`users/${user_id}`, body)
     return treatmentForErrors(request)
   }
 }
