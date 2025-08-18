@@ -26,12 +26,7 @@ export const Header = () => {
   }, [verify])
 
   return (
-    <header
-      className="
-        flex items-center w-full justify-between
-        bg-gradient-to-r from-gray-100 to-gray-900 text-white
-        px-4 py-3 relative"
-    >
+    <header className="relative flex w-full items-center justify-between bg-gradient-to-r from-gray-100 to-gray-900 px-4 py-3 text-white">
       <div className="text-md font-bold" role="button" onClick={redirectToHome}>
         <Image
           src="/abrasel_logo_removed_bg.webp"
@@ -39,19 +34,18 @@ export const Header = () => {
           width={100}
           height={20}
           priority
-          className="rounded-md cursor-pointer"
+          className="cursor-pointer rounded-md"
         />
       </div>
       <div
         role="button"
         onClick={() => handleToggleUserOptions(styles.disappear)}
-        className="flex gap-4 w-[300px] px-4 py-2 relative bg-gray-700 hover:bg-gray-500
-                   rounded-4xl hover:cursor-pointer text-sm"
+        className="relative flex w-[150px] gap-4 rounded-4xl bg-gray-700 px-4 py-2 text-sm hover:cursor-pointer hover:bg-gray-500 sm:w-[300px]"
       >
-        <div className="flex gap-4 items-center">
+        <div className="flex items-center gap-4">
           <FaRegCircleUser size={24} />
 
-          <div className="flex flex-col justify-center ml-4 leading-6">
+          <div className="ml-4 hidden flex-col justify-center leading-6 sm:flex">
             <span className="text-gray-200">Bem vindo(a),</span>
             <strong className="text-green-400">{user?.name}</strong>
           </div>
