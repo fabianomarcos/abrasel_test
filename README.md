@@ -1,8 +1,13 @@
 Você consegue acompanhar em produção pela url https://abrasel-test.vercel.app
 
+Usuário admin@admin.com
+Senha   Admin@0904
+
 
 Para rodar localmente rode os seguintes comandos abaixo: 
 ```bash
+git checkout dev
+
 pnpm install
 
 npx prisma migrate dev
