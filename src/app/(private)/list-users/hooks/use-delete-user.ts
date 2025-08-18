@@ -26,6 +26,10 @@ export function useDeleteUser({ userService }: UserServicePropsProps) {
         Toast({ content: error?.message, options: { type: 'error' } })
         return
       }
+      Toast({
+        content: `Usuário deletado com sucesso.`,
+        options: { type: 'success' },
+      })
       queryClient.invalidateQueries({ queryKey: ['list_users'] })
     },
   })
