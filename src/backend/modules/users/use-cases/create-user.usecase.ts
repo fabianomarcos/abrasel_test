@@ -12,8 +12,8 @@ export class CreateUserUseCase {
   ) {}
 
   async execute(input: UserOrm): Promise<User> {
-    const { email, role, name, password } = input
-    FieldValidator.validateRequiredFields({ email, role, name, password })
+    const { email, name, password } = input
+    FieldValidator.validateRequiredFields({ email, name, password })
 
     const existingUser = await this.usersRepository.listByEmail(input.email)
     if (existingUser) throw new BadRequestError('User already exists')
