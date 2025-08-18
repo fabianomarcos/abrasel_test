@@ -47,11 +47,6 @@ export function UserOptions() {
         </Li>
       )}
 
-      <Li onClick={redirectToListUsers}>
-        <User size={24} />
-        <span>Usuários</span>
-      </Li>
-
       <Li onClick={signOut}>
         <LogOut size={24} />
         <span>Sair</span>
