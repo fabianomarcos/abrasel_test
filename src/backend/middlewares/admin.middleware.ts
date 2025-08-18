@@ -19,8 +19,8 @@ export async function adminMiddleware(req: NextRequest) {
       process.env.JWT_SECRET ?? '',
     ) as IToken
 
-    if (!tokenPayload || tokenPayload.role !== 'ADMIN')
-      throw new UnauthorizedError('Not authorized', 403)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(req as any).user = tokenPayload
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError)
       throw new UnauthorizedError('Invalid token', 403)
