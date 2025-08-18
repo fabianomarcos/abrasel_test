@@ -1,5 +1,5 @@
 import { getMeService } from '@/services/sign-in'
-import { User } from '@/services/sign-in/types'
+import { User } from '@/services/sign-in/contracts'
 import { StorageEnum } from '@/utils/storage-enum'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'

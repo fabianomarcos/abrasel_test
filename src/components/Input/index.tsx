@@ -48,6 +48,7 @@ export const Input = ({ name, label, register, errors, ...props }: IProps) => {
           className={`flex w-full min-w-[260px] h-11 rounded-lg px-2 py-2 border transition-all outline-none
             ${borderClass}
           `}
+          onChange={props.onChange || register?.onChange}
         />
 
         <div className={`transition-opacity duration-500 ${opacityClass}`}>

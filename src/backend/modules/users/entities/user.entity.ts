@@ -16,7 +16,7 @@ export class User {
   updated_at?: Date
 }
 
-export type UpdateUser = User & { user_id: string }
+export type UpdateUser = User & { user_id: string; current_password: string }
 
 export type UserOrm = UserPrisma
 

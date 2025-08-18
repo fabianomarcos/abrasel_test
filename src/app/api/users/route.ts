@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server'
 import { treatmentResponse } from '@/backend/middlewares/treatment-errors'
 import { CreateUserController } from '@/backend/modules/users/controllers/create-user.controller'
 import { ListUsersController } from '@/backend/modules/users/controllers/list-users.controller'
-import { adminMiddleware as middleware } from '@/backend/middlewares/admin.middleware'
+import { userMiddleware as middleware } from '@/backend/middlewares/user.middleware'
 
 const listUsersController = ListUsersController()
 const createUserController = CreateUserController()
