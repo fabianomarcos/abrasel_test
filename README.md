@@ -3,6 +3,7 @@ Você consegue acompanhar em produção pela url https://abrasel-test.vercel.app
 Usuário admin@admin.com
 Senha   Admin@0904
 
+obs: ainda estou mexendo no responsivo, devido a falta de tempo que tive. 
 
 Para rodar localmente rode os seguintes comandos abaixo: 
 ```bash
