@@ -26,12 +26,12 @@ export const ProfileForm = () => {
   return (
     <form
       onSubmit={handleSubmit(update)}
-      className="flex flex-col gap-4 bg-gray-900 w-full rounded-md p-8"
+      className="flex w-full flex-col gap-4 rounded-md bg-gray-900 p-6 sm:p-8"
     >
       {isSubmitting && <Loader />}
-      <span className="text-2xl mb-4">Meu Perfil</span>
+      <span className="mb-4 text-2xl">Meu Perfil</span>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
         <Input
           name="name"
           label="Nome"
@@ -48,7 +48,7 @@ export const ProfileForm = () => {
           disabled
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
         <Input
           name="current_password"
           label="Senha atual"
@@ -67,7 +67,7 @@ export const ProfileForm = () => {
         />
       </div>
 
-      <div className="flex justify-end w-full pr-10 pt-3">
+      <div className="flex w-full justify-end pt-3 pr-10">
         <Button>
           <Save size={24} />
           Salvar

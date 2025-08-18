@@ -59,12 +59,12 @@ export const AddressForm = () => {
   return (
     <form
       onSubmit={handleSubmit(create)}
-      className="flex flex-col gap-4 bg-gray-900 w-full rounded-md p-8"
+      className="flex w-full flex-col gap-4 rounded-md bg-gray-900 p-8"
     >
       {(isSubmitting || loading) && <Loader />}
-      <span className="text-2xl mb-4">Meu Endereço</span>
+      <span className="mb-4 text-2xl">Meu Endereço</span>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
         <Input
           name="zip_code"
           label="Cep"
@@ -85,7 +85,7 @@ export const AddressForm = () => {
           disabled={blockFields}
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
         <Input
           name="neighborhood"
           label="Bairro"
@@ -106,7 +106,7 @@ export const AddressForm = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
         <Input
           name="state"
           label="Estado"
@@ -125,7 +125,7 @@ export const AddressForm = () => {
         />
       </div>
 
-      <div className="flex justify-end w-full pr-10 pt-3">
+      <div className="flex w-full justify-end pt-3 pr-10">
         <Button>
           <Save size={24} />
           Salvar
