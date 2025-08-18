@@ -12,6 +12,10 @@ export const ERRORS = (text?: string) => {
       'en-US': 'Credential are not valid.',
       'pt-BR': 'Credenciais Inválidas',
     },
+    'User not exists': {
+      'en-US': 'User not exists.',
+      'pt-BR': 'Usuário não existe',
+    },
 
     default: {
       'en-US': 'An error occurred, please try later.',
