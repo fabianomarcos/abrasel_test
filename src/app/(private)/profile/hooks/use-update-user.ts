@@ -21,8 +21,10 @@ export function useUpdateUser({ userService }: UserServiceProps) {
       return acc
     }, {} as Record<string, string>) as unknown as IBodyUpdateUser
 
-    const [data, error] = await userService.update(input, user_id as string)
-    console.log('error: ', data)
+    const [data, error] = await userService.update(
+      input,
+      (user_id || input?.id) as string,
+    )
 
     if (error) {
       const errorMessage = error?.message.includes('Some fields are invalids:')
