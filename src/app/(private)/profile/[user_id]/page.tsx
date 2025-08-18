@@ -17,14 +17,14 @@ export default function ProfilePage() {
           <span
             role="button"
             onClick={() => setTab('profile')}
-            className="cursor-pointer text-2xl"
+            className={`cursor-pointer text-2xl ${tab === 'profile' ? 'text-amber-300' : ''}`}
           >
             Perfil
           </span>
           <span
             role="button"
             onClick={() => setTab('address')}
-            className="cursor-pointer text-2xl"
+            className={`cursor-pointer text-2xl ${tab === 'address' ? 'text-amber-300' : ''}`}
           >
             Endereço
           </span>
