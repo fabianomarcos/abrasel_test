@@ -6,6 +6,19 @@ export interface IBodySignUp {
   email: string
 }
 
+export interface IAddress {
+  city: string
+  created_at: string
+  id: string
+  neighborhood: string
+  number: string
+  state: string
+  street: string
+  updated_at: string
+  user_id: string
+  zip_code: string
+}
+
 export interface IUser {
   id: string
   email: string
@@ -14,6 +27,7 @@ export interface IUser {
   active: boolean
   created_at: string
   updated_at: string
+  Address?: IAddress
 }
 
 export interface IBodyUpdateUser {
@@ -34,6 +48,9 @@ export type UserServiceContract = {
   ) => Promise<[{ user: IUser } | null, IError | null]>
   update: (
     body: IBodyUpdateUser,
+    user_id: string,
+  ) => Promise<[{ user: IUser } | null, IError | null]>
+  listById: (
     user_id: string,
   ) => Promise<[{ user: IUser } | null, IError | null]>
 }

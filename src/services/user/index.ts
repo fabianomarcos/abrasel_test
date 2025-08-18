@@ -22,4 +22,11 @@ export class UserService implements UserServiceContract {
     const request = api.put(`users/${user_id}`, body)
     return treatmentForErrors(request)
   }
+
+  async listById(
+    user_id: string,
+  ): Promise<[{ user: IUser } | null, IError | null]> {
+    const request = api.get(`users/${user_id}`)
+    return treatmentForErrors(request)
+  }
 }

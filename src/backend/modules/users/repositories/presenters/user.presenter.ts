@@ -5,6 +5,7 @@ export class UserPresenter {
   static toHTTP(user: UserPrisma | null): User | null {
     if (!user) return null
     return {
+      ...user,
       id: user.id,
       role: user.role,
       active: user.active,

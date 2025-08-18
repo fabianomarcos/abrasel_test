@@ -26,7 +26,10 @@ export class UsersRepository implements IUserRepository {
   }
 
   async listById(id: string): Promise<User | null> {
-    const user = await prisma.user.findUnique({ where: { id } })
+    const user = await prisma.user.findUnique({
+      where: { id },
+      include: { Address: true },
+    })
     return UserPresenter.toHTTP(user)
   }
 
