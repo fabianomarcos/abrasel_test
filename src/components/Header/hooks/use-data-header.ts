@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 export function useDataHeader() {
   const [showOptions, setShowOptions] = useState(false)
-  console.log('showOptions: ', showOptions)
 
   const disappear = (styles: string) => {
     const element = document.querySelector(

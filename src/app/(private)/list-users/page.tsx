@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FiEdit, FiTrash } from 'react-icons/fi'
 
 import { ROUTES } from '@/routes'
@@ -12,10 +12,18 @@ import { Loader } from '@/components/Loader'
 import { Toast } from '@/components/Toast'
 import { ERRORS } from '@/translator'
 import { useDeleteUser } from './hooks/use-delete-user'
+import { Pagination } from '@/components/Pagination'
+import { Modal } from './@components/modal'
+import { useUpdateUser } from '../profile/hooks/use-update-user'
+import { UpdateFormSchemaType } from '@/schemas/update-form-schema'
 
 const userService = new UserService()
 
 export default function ListUsersPage() {
+  const { user } = userStore()
+  const [editUser, setEditUser] = useState({} as UpdateFormSchemaType)
+  const [page, setPage] = useState(1)
+  const [showModal, setShowModal] = useState(false)
   const router = useRouter()
   const {
     deleteUser,
@@ -24,6 +32,8 @@ export default function ListUsersPage() {
   } = useDeleteUser({
     userService,
   })
+
+  const { update } = useUpdateUser({ userService })
 
   const { error, isPending, users } = useGetUsers({
     userService,
@@ -38,8 +48,6 @@ export default function ListUsersPage() {
   if (error) {
     Toast({ content: ERRORS(error?.message), options: { type: 'error' } })
   }
-
-  const { user } = userStore()
 
   useEffect(() => {
     if (user?.role !== 'ADMIN') router.push(ROUTES.PRIVATE.HOME)
@@ -81,14 +89,22 @@ export default function ListUsersPage() {
                         {new Date(user.created_at).toLocaleDateString('pt-BR')}
                       </td>
                       <td className="cursor-pointer px-4 py-2 border-b">
-                        <FiEdit color="#10c437" size={24} />
+                        <FiEdit
+                          role="button"
+                          onClick={() => {
+                            setShowModal((state) => !state)
+                            setEditUser({ ...user, password: '' })
+                          }}
+                          color="#10c437"
+                          size={20}
+                        />
                       </td>
                       <td className="cursor-pointer px-4 py-2 border-b">
                         <FiTrash
                           role="button"
                           onClick={() => deleteUser(user.id)}
                           color="#d40101"
-                          size={24}
+                          size={20}
                         />
                       </td>
                     </tr>
@@ -96,7 +112,22 @@ export default function ListUsersPage() {
                 })}
             </tbody>
           </table>
+
+          {showModal && (
+            <Modal
+              isOpen={showModal}
+              toggleModal={() => setShowModal((state) => !state)}
+              editingUser={editUser}
+              updateUser={update}
+            />
+          )}
         </div>
+
+        <Pagination
+          page={page}
+          totalPages={users?.total || 1}
+          onPageChange={setPage}
+        />
       </div>
     </div>
   )

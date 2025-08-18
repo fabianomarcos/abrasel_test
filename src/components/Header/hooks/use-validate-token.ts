@@ -9,7 +9,6 @@ import { tokenStore } from '@/stores/token-store'
 export function useValidateToken() {
   const router = useRouter()
   const { token, setToken } = tokenStore()
-  console.log('token: ', token)
 
   const verify = useCallback(() => {
     try {
