@@ -22,4 +22,8 @@ npx prisma studio
 ```
 Entrar na tabela users e editar o usuário criado como ADMIN na role
 
+Deixei um usuário salvo como
+admin@admin.com
+Admin@0904
+
 Abra [http://localhost:3000](http://localhost:3000) em seu browser.
