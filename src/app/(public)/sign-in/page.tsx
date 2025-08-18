@@ -23,7 +23,7 @@ export default function LoginPage() {
     <div className="flex overflow-hidden bg-[url('/login_background.webp')] bg-cover bg-center">
       <div className="flex h-full w-full items-center justify-center bg-gray-100 bg-gradient-to-br opacity-40" />
       <div className="bg-gray-800">
-        <div className="flex h-screen w-[330px] items-center justify-center">
+        <div className="flex h-screen w-[310px] items-center justify-center sm:w-[330px]">
           {isSubmitting && <Loader />}
           <form
             className="flex h-full w-full flex-col justify-center gap-4 p-8"
