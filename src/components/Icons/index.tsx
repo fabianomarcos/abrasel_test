@@ -1,5 +1,6 @@
 import { IoEyeOutline as EyeOutline } from 'react-icons/io5'
 import { FaLinkedin as Linkedin } from 'react-icons/fa6'
+import { MdOutlineSaveAs as Save } from 'react-icons/md'
 
 import {
   FiInfo as Info,
@@ -10,4 +11,4 @@ import {
 
 import { GiBullseye as Target } from 'react-icons/gi'
 
-export { EyeOutline, Info, Linkedin, LogOut, User, Users, Target }
+export { EyeOutline, Info, Linkedin, LogOut, Save, User, Users, Target }

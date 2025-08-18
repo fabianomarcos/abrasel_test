@@ -63,7 +63,7 @@ export const Header = () => {
 
       {showOptions && (
         <div
-          className={`absolute top-20 right-8 z-10 ${styles.list}`}
+          className={`absolute top-20 right-9 z-10 ${styles.list}`}
           data-id="animation"
         >
           <UserOptions />

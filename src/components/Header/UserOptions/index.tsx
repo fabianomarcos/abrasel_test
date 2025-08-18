@@ -1,8 +1,10 @@
 'use client'
+import { useRouter } from 'next/navigation'
+
+import { ROUTES } from '@/routes'
+import { userStore } from '@/stores/user-store'
 import { LogOut, User } from '@/components/Icons'
 import { useSignOut } from '../hooks/use-sign-out'
-import { useRouter } from 'next/navigation'
-import { ROUTES } from '@/routes'
 
 interface LiProps extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode
@@ -11,8 +13,10 @@ interface LiProps extends React.HTMLAttributes<HTMLLIElement> {
 export function UserOptions() {
   const router = useRouter()
   const { signOut } = useSignOut()
+  const { user } = userStore()
 
-  const redirectToProfile = () => router.push(ROUTES.PRIVATE.PROFILE)
+  const redirectToProfile = () =>
+    router.push(`${ROUTES.PRIVATE.PROFILE}/${user?.id}`)
 
   const Li = ({ children, ...rest }: LiProps) => (
     <li
@@ -25,7 +29,7 @@ export function UserOptions() {
   )
   return (
     <ul
-      className="w-72 bg-gray-400 p-5 list-none rounded-xl gap-5 text-lg
+      className="w-64 bg-gray-400 p-5 list-none rounded-xl gap-5 text-lg
       flex flex-col"
     >
       <Li onClick={redirectToProfile}>
