@@ -9,7 +9,7 @@ interface IToken {
   role: 'ADMIN' | 'USER'
 }
 
-export async function adminMiddleware(req: NextRequest) {
+export async function userMiddleware(req: NextRequest) {
   try {
     const authToken = req.headers.get('authorization')
     if (!authToken) throw new UnauthorizedError()
@@ -19,11 +19,7 @@ export async function adminMiddleware(req: NextRequest) {
       process.env.JWT_SECRET ?? '',
     ) as IToken
 
-    if (tokenPayload.role !== 'ADMIN')
-      throw new UnauthorizedError(
-        'Você não tem permissão para esta funcionalidade',
-      )
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(req as any).user = tokenPayload
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError)

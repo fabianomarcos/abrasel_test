@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { treatmentResponse } from '@/backend/middlewares/treatment-errors'
 import { CreateAddressController } from '@/backend/modules/address/controllers/create-address.controller'
-import { adminMiddleware as middleware } from '@/backend/middlewares/admin.middleware'
+import { userMiddleware as middleware } from '@/backend/middlewares/user.middleware'
 
 const createAddressController = CreateAddressController()
 
