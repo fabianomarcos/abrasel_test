@@ -39,13 +39,13 @@ export const Header = () => {
           width={100}
           height={20}
           priority
-          className="rounded-md"
+          className="rounded-md cursor-pointer"
         />
       </div>
       <div
         role="button"
         onClick={() => handleToggleUserOptions(styles.disappear)}
-        className="flex gap-4 px-4 py-2 relative bg-gray-700 hover:bg-gray-500
+        className="flex gap-4 w-[300px] px-4 py-2 relative bg-gray-700 hover:bg-gray-500
                    rounded-4xl hover:cursor-pointer text-sm"
       >
         <div className="flex gap-4 items-center">
