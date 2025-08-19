@@ -73,26 +73,25 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
         </button>
       )}
 
-      {showButton(page) && (
-        <button
-          onClick={() => goToSelectedPage(page)}
-          disabled
-          className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white"
-        >
-          {page}
-        </button>
-      )}
+      <button
+        onClick={() => goToSelectedPage(page)}
+        disabled
+        className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-amber-600 disabled:opacity-50"
+      >
+        {page}
+      </button>
 
       {showButton(page + 1) && (
         <button
           onClick={() => goToSelectedPage(page + 1)}
-          className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white"
+          disabled={disableButton(page + 1)}
+          className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
         >
           {page + 1}
         </button>
       )}
 
-      <span className="border border-gray-300 bg-gray-900 px-4 py-2 text-white">
+      <span className="border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50">
         ...
       </span>
 
@@ -105,6 +104,7 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
           {pages.penultimate}
         </button>
       )}
+
       {showButton(pages.last) && (
         <button
           onClick={() => goToSelectedPage(pages.last)}
