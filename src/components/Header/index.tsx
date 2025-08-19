@@ -47,7 +47,9 @@ export const Header = () => {
 
           <div className="ml-4 hidden flex-col justify-center leading-6 sm:flex">
             <span className="text-gray-200">Bem vindo(a),</span>
-            <strong className="text-green-400">{user?.name}</strong>
+            <strong className="text-green-400">
+              {user?.name?.substring(0, 10)}...
+            </strong>
           </div>
 
           <FiArrowDown size={24} className="text-gray-100" />
