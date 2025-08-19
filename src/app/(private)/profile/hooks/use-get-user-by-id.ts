@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query'
-import { UserServiceContract } from '@/services/user/contracts'
+'use client'
 import { useParams } from 'next/navigation'
+import { IUser, UserServiceContract } from '@/services/user/contracts'
+import { useCallback, useEffect, useState } from 'react'
+import { IError } from '@/backend/interfaces'
 
 type UserServicePropsProps = {
   userService: UserServiceContract
@@ -8,16 +10,19 @@ type UserServicePropsProps = {
 
 export function useGetUserById({ userService }: UserServicePropsProps) {
   const { user_id } = useParams()
-  const listUser = () => {
-    return userService.listById(user_id as string)
-  }
+  const [isPending, setIsPending] = useState(true)
+  const [user, setUser] = useState({} as IUser)
+  const [error, setError] = useState({} as IError)
+  const listUser = useCallback(async () => {
+    const [data, error] = await userService.listById(user_id as string)
+    if (data) setUser(data.user)
+    if (error) setError(error)
+    setIsPending(false)
+  }, [userService, user_id])
 
-  const { isPending, data } = useQuery({
-    queryKey: [`list_user/${user_id}`],
-    queryFn: listUser,
-  })
-
-  const [user, error] = data || [null, null]
+  useEffect(() => {
+    listUser()
+  }, [listUser])
 
   return { error, isPending, user }
 }

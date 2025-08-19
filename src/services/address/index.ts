@@ -4,9 +4,31 @@ import {
   IBodyAddress,
   IResponseAddress,
   AddressServiceContract,
+  IBodyUpdateAddress,
 } from './contracts'
 
 export class AddressService implements AddressServiceContract {
+  async update({
+    address_id,
+    city,
+    neighborhood,
+    number,
+    state,
+    street,
+    zip_code,
+  }: IBodyUpdateAddress): Promise<ResponseType<IResponseAddress>> {
+    const request = api.put(`address/${address_id}`, {
+      id: address_id,
+      city,
+      neighborhood,
+      number,
+      state,
+      street,
+      zip_code,
+    })
+    return treatmentForErrors(request)
+  }
+
   async create({
     street,
     number,

@@ -15,7 +15,7 @@ import { UserService } from '@/services/user'
 import { useGetCep } from '../hooks/use-get-cep'
 import { AddressService } from '@/services/address'
 import { useGetUserById } from '../hooks/use-get-user-by-id'
-import { useCreateAddress } from '../hooks/use-create-address'
+import { useFormAddress } from '../hooks/use-form-address'
 import { useValidateSchema } from '@/hooks/use-schema-validator'
 
 const addressService = new AddressService()
@@ -23,9 +23,11 @@ const userService = new UserService()
 
 export const AddressForm = () => {
   const [cep, setCep] = useState('')
-
-  const { create } = useCreateAddress({ addressService })
   const { user } = useGetUserById({ userService })
+  const { create, update } = useFormAddress({
+    addressService,
+    address_id: user?.Address?.id,
+  })
   const { register, errors, handleSubmit, isSubmitting, setValue } =
     useValidateSchema(addressFormSchema)
 
@@ -38,14 +40,14 @@ export const AddressForm = () => {
   const { city, state, street, neighborhood } = dataCep
 
   useEffect(() => {
-    if (user?.user?.Address?.zip_code) {
-      setValue('zip_code', user.user.Address.zip_code || '', {
+    if (user?.Address?.zip_code) {
+      setValue('zip_code', user.Address.zip_code || '', {
         shouldValidate: true,
       })
-      setCep(user?.user?.Address?.zip_code || '')
+      setCep(user?.Address?.zip_code || '')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [user?.Address?.zip_code])
 
   useEffect(() => {
     if (blockFields) {
@@ -58,7 +60,7 @@ export const AddressForm = () => {
 
   return (
     <form
-      onSubmit={handleSubmit(create)}
+      onSubmit={handleSubmit(user?.Address?.id ? update : create)}
       className="flex w-full flex-col gap-4 rounded-md bg-gray-900 p-8"
     >
       {(isSubmitting || loading) && <Loader />}
