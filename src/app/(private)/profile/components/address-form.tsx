@@ -64,7 +64,7 @@ export const AddressForm = () => {
       {(isSubmitting || loading) && <Loader />}
       <span className="mb-4 text-2xl">Meu Endereço</span>
 
-      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
+      <div className="grid w-full grid-cols-1 items-center gap-4 md:grid-cols-2">
         <Input
           name="zip_code"
           label="Cep"
@@ -85,6 +85,7 @@ export const AddressForm = () => {
           disabled={blockFields}
         />
       </div>
+
       <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2">
         <Input
           name="neighborhood"
@@ -125,8 +126,8 @@ export const AddressForm = () => {
         />
       </div>
 
-      <div className="flex w-full justify-end pt-3 pr-10">
-        <Button>
+      <div className="flex w-full justify-end pt-3">
+        <Button classNameOut="w-full max-w-full sm:max-w-36 sm:w-36">
           <Save size={24} />
           Salvar
         </Button>
