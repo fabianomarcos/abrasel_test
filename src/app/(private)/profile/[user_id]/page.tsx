@@ -9,11 +9,11 @@ export default function ProfilePage() {
   const [tab, setTab] = useState<'profile' | 'address'>('profile')
 
   return (
-    <div>
+    <>
       <Header />
 
-      <div className="flex flex-col px-8 sm:px-16 sm:py-8">
-        <div className="flex gap-4 py-4">
+      <div className="flex flex-col sm:px-8 sm:py-8 md:px-16">
+        <div className="flex gap-4 px-6 py-4 sm:px-0">
           <span
             role="button"
             onClick={() => setTab('profile')}
@@ -34,6 +34,6 @@ export default function ProfilePage() {
 
         {tab === 'address' && <AddressForm />}
       </div>
-    </div>
+    </>
   )
 }

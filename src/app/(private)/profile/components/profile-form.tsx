@@ -67,8 +67,8 @@ export const ProfileForm = () => {
         />
       </div>
 
-      <div className="flex w-full justify-end pt-3 pr-10">
-        <Button>
+      <div className="flex w-full justify-end pt-3">
+        <Button classNameOut="w-full max-w-full sm:max-w-36 sm:w-36">
           <Save size={24} />
           Salvar
         </Button>
