@@ -56,20 +56,32 @@ export default function ListUsersPage() {
   return (
     <div>
       <Header />
-      <div className="max-w-6xl mx-auto p-6">
-        <h1 className="text-2xl font-semibold mb-4">Usuários</h1>
+      <div className="lg:6 mx-auto max-w-6xl px-2 py-4 sm:px-2">
+        <h1 className="mb-4 text-2xl font-semibold">Usuários</h1>
 
         <div className="overflow-x-auto rounded-lg border">
           <table className="w-full border-collapse text-sm">
             <thead className="bg-gray-800 text-left">
               <tr>
-                <th className="px-4 py-2 border-b">Nome</th>
-                <th className="px-4 py-2 border-b">Email</th>
-                <th className="px-4 py-2 border-b">Role</th>
-                <th className="px-4 py-2 border-b">Ativo</th>
-                <th className="px-4 py-2 border-b">Criado em</th>
-                <th className="px-4 py-2 border-b">Editar</th>
-                <th className="px-4 py-2 border-b">Deletar</th>
+                <th className="border-b px-3 py-2 sm:px-4">Nome</th>
+                <th className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
+                  Email
+                </th>
+                <th className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
+                  Role
+                </th>
+                <th className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
+                  Ativo
+                </th>
+                <th className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
+                  Criado em
+                </th>
+                <th className="border-b px-3 py-2 text-center sm:px-4">
+                  Editar
+                </th>
+                <th className="border-b px-3 py-2 text-center sm:px-4">
+                  Deletar
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -79,16 +91,22 @@ export default function ListUsersPage() {
                 users.data.map((user) => {
                   return (
                     <tr key={user.id} className="hover:bg-gray-600">
-                      <td className="px-4 py-2 border-b">{user.name}</td>
-                      <td className="px-4 py-2 border-b">{user.email}</td>
-                      <td className="px-4 py-2 border-b">{user.role}</td>
-                      <td className="px-4 py-2 border-b">
+                      <td className="border-b px-3 py-2 sm:px-4">
+                        {user.name}
+                      </td>
+                      <td className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
+                        {user.email}
+                      </td>
+                      <td className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
+                        {user.role}
+                      </td>
+                      <td className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
                         {user.active ? '✅' : '❌'}
                       </td>
-                      <td className="px-4 py-2 border-b">
+                      <td className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
                         {new Date(user.created_at).toLocaleDateString('pt-BR')}
                       </td>
-                      <td className="cursor-pointer px-4 py-2 border-b">
+                      <td className="flex cursor-pointer justify-center border-b px-4 py-2">
                         <FiEdit
                           role="button"
                           onClick={() => {
@@ -99,7 +117,7 @@ export default function ListUsersPage() {
                           size={20}
                         />
                       </td>
-                      <td className="cursor-pointer px-4 py-2 border-b">
+                      <td className="cursor-pointer border-b pl-7 text-center sm:pl-18 md:pl-11">
                         <FiTrash
                           role="button"
                           onClick={() => deleteUser(user.id)}

@@ -24,17 +24,14 @@ export function UserOptions() {
   const Li = ({ children, ...rest }: LiProps) => (
     <li
       role="button"
-      className="flex align-center items-start gap-6 cursor-pointer w-full hover:opacity-50"
+      className="align-center flex w-full cursor-pointer items-start gap-6 hover:opacity-50"
       {...rest}
     >
       {children}
     </li>
   )
   return (
-    <ul
-      className="w-64 bg-gray-400 p-5 list-none rounded-xl gap-5 text-lg
-      flex flex-col"
-    >
+    <ul className="flex w-64 list-none flex-col gap-5 rounded-xl bg-gray-400 p-5 text-lg">
       <Li onClick={redirectToProfile}>
         <User size={24} />
         <span>Meu perfil</span>

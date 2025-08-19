@@ -16,6 +16,10 @@ export const ERRORS = (text?: string) => {
       'en-US': 'User not exists.',
       'pt-BR': 'Usuário não existe',
     },
+    'User already exists': {
+      'en-US': 'User already exists.',
+      'pt-BR': 'Usuário já existe',
+    },
 
     default: {
       'en-US': 'An error occurred, please try later.',

@@ -12,19 +12,19 @@ export default function ProfilePage() {
     <div>
       <Header />
 
-      <div className="flex flex-col py-8 px-16">
+      <div className="flex flex-col px-8 sm:px-16 sm:py-8">
         <div className="flex gap-4 py-4">
           <span
             role="button"
             onClick={() => setTab('profile')}
-            className="text-2xl cursor-pointer"
+            className={`cursor-pointer text-2xl ${tab === 'profile' ? 'text-amber-300' : ''}`}
           >
             Perfil
           </span>
           <span
             role="button"
             onClick={() => setTab('address')}
-            className="text-2xl cursor-pointer"
+            className={`cursor-pointer text-2xl ${tab === 'address' ? 'text-amber-300' : ''}`}
           >
             Endereço
           </span>
