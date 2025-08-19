@@ -51,12 +51,21 @@ export const AddressForm = () => {
 
   useEffect(() => {
     if (blockFields) {
+      setValue('number', user?.Address?.number || '', { shouldValidate: true })
       setValue('state', state || '', { shouldValidate: true })
       setValue('city', city || '', { shouldValidate: true })
       setValue('street', street || '', { shouldValidate: true })
       setValue('neighborhood', neighborhood || '', { shouldValidate: true })
     }
-  }, [blockFields, city, state, street, neighborhood, setValue])
+  }, [
+    blockFields,
+    city,
+    state,
+    street,
+    neighborhood,
+    setValue,
+    user?.Address?.number,
+  ])
 
   return (
     <form
