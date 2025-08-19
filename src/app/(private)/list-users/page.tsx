@@ -37,7 +37,7 @@ export default function ListUsersPage() {
 
   const { error, isPending, users } = useGetUsers({
     userService,
-    page: 1,
+    page,
     perPage: 2,
   })
 
