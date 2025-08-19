@@ -24,7 +24,7 @@ export function useGetUsers({
   }
 
   const { isPending, data } = useQuery({
-    queryKey: [`list_users`],
+    queryKey: [`list_users?page=${page}&perPage=${perPage}`],
     queryFn: listUsers,
   })
 

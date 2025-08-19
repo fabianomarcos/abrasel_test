@@ -37,8 +37,8 @@ export default function ListUsersPage() {
 
   const { error, isPending, users } = useGetUsers({
     userService,
-    page: 1,
-    perPage: 20,
+    page,
+    perPage: 2,
   })
 
   if (errorDelete) {
@@ -143,8 +143,9 @@ export default function ListUsersPage() {
 
         <Pagination
           page={page}
-          totalPages={users?.total || 1}
-          onPageChange={setPage}
+          count={users?.total || 1}
+          setCurrentPage={setPage}
+          perPage={users?.perPage || 2}
         />
       </div>
     </div>
