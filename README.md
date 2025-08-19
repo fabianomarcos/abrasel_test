@@ -46,17 +46,20 @@ Perfil
 Endereço
 <img width="1825" height="518" alt="image" src="https://github.com/user-attachments/assets/0a474c59-ee5e-4d97-9fec-3010583c6445" />
 
-Perfil admin
+PERFIL ADMIN
 
 <img width="707" height="102" alt="image" src="https://github.com/user-attachments/assets/9684cf86-9caa-4f87-81f6-b47427b353b9" />
 
 <img width="450" height="293" alt="image" src="https://github.com/user-attachments/assets/930abc2c-c586-4d0c-a2ac-79c3d77ba6c6" />
 
-Perfil user
+PERFIL USER
+
+<img width="340" height="241" alt="image" src="https://github.com/user-attachments/assets/fff4d473-22f5-4ff7-8188-d5a1f2aefc1b" />
+
 
 <img width="441" height="103" alt="image" src="https://github.com/user-attachments/assets/1a710ce2-e9d1-4596-80a1-ba3d88d7848d" />
 
-<img width="340" height="241" alt="image" src="https://github.com/user-attachments/assets/fff4d473-22f5-4ff7-8188-d5a1f2aefc1b" />
+
 
 
 
