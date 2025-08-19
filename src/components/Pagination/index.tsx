@@ -25,8 +25,7 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
 
   const goToSelectedPage = (_page: number) => setCurrentPage(_page)
 
-  const disableButton = (pageComponent: number) =>
-    page === pageComponent || page >= last
+  const disableButton = (pageComponent: number) => page === pageComponent
 
   const show = (pageComponent: number) => last >= pageComponent
 
