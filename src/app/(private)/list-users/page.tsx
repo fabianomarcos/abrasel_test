@@ -107,23 +107,27 @@ export default function ListUsersPage() {
                         {new Date(user.created_at).toLocaleDateString('pt-BR')}
                       </td>
                       <td className="flex cursor-pointer justify-center border-b px-4 py-2">
-                        <FiEdit
-                          role="button"
-                          onClick={() => {
-                            setShowModal((state) => !state)
-                            setEditUser({ ...user, password: '' })
-                          }}
-                          color="#10c437"
-                          size={20}
-                        />
+                        <div className="flex justify-center">
+                          <FiEdit
+                            role="button"
+                            onClick={() => {
+                              setShowModal((state) => !state)
+                              setEditUser({ ...user, password: '' })
+                            }}
+                            color="#10c437"
+                            size={20}
+                          />
+                        </div>
                       </td>
-                      <td className="cursor-pointer border-b pl-7 text-center sm:pl-18 md:pl-11">
-                        <FiTrash
-                          role="button"
-                          onClick={() => deleteUser(user.id)}
-                          color="#d40101"
-                          size={20}
-                        />
+                      <td className="cursor-pointer border-b text-center">
+                        <div className="flex justify-center">
+                          <FiTrash
+                            role="button"
+                            onClick={() => deleteUser(user.id)}
+                            color="#d40101"
+                            size={20}
+                          />
+                        </div>
                       </td>
                     </tr>
                   )
