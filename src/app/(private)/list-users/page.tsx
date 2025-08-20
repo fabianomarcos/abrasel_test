@@ -106,7 +106,7 @@ export default function ListUsersPage() {
                       <td className="hidden border-b px-3 py-2 sm:table-cell sm:px-4">
                         {new Date(user.created_at).toLocaleDateString('pt-BR')}
                       </td>
-                      <td className="flex cursor-pointer justify-center border-b px-4 py-2">
+                      <td className="cursor-pointer border-b px-4 py-2">
                         <div className="flex justify-center">
                           <FiEdit
                             role="button"
