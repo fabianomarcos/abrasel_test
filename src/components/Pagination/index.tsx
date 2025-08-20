@@ -37,7 +37,7 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
       <button
         onClick={goToUnderPage}
         disabled={disableButton(1)}
-        className="flex cursor-pointer items-center gap-2 rounded-l-lg border border-gray-300 bg-gray-900 px-4 py-2 disabled:opacity-50"
+        className="flex w-full cursor-pointer items-center gap-2 rounded-l-lg border border-gray-300 bg-gray-900 px-4 py-2 disabled:opacity-50 sm:w-auto"
       >
         <FiArrowLeft size={20} className="text-gray-100" />
         <span className="text-white">Anterior</span>
@@ -46,7 +46,7 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
       <button
         onClick={() => goToSelectedPage(1)}
         disabled={disableButton(1)}
-        className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
+        className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
       >
         1
       </button>
@@ -54,12 +54,12 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
       <button
         onClick={() => goToSelectedPage(2)}
         disabled={disableButton(2)}
-        className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
+        className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
       >
         2
       </button>
 
-      <span className="border border-gray-300 bg-gray-900 px-4 py-2 text-white">
+      <span className="btn-xs hidden border border-gray-300 bg-gray-900 px-4 py-2 text-white sm:block">
         ...
       </span>
 
@@ -67,7 +67,7 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
         <button
           onClick={() => goToSelectedPage(page - 1)}
           disabled={disableButton(page - 1)}
-          className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
+          className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
         >
           {page - 1}
         </button>
@@ -85,13 +85,13 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
         <button
           onClick={() => goToSelectedPage(page + 1)}
           disabled={disableButton(page + 1)}
-          className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
+          className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
         >
           {page + 1}
         </button>
       )}
 
-      <span className="border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50">
+      <span className="border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 max-[400px]:px-2 sm:block sm:px-4">
         ...
       </span>
 
@@ -99,7 +99,7 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
         <button
           onClick={() => goToSelectedPage(pages.penultimate)}
           disabled={disableButton(pages.penultimate)}
-          className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50"
+          className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
         >
           {pages.penultimate}
         </button>
