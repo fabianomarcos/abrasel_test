@@ -76,7 +76,7 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
       <button
         onClick={() => goToSelectedPage(page)}
         disabled
-        className="cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-amber-600 disabled:opacity-50"
+        className="border border-gray-300 bg-green-800 px-4 py-2 text-white"
       >
         {page}
       </button>
