@@ -25,7 +25,6 @@ describe('ListPage Component', () => {
     renderWithClient(<Listing userService={userService} />)
 
     await screen.findByText(user.email)
-    screen.logTestingPlaygroundURL()
 
     expect(screen.getByText(user.name)).toBeInTheDocument()
     expect(screen.getByText(user.email)).toBeInTheDocument()
@@ -39,7 +38,6 @@ describe('ListPage Component', () => {
     renderWithClient(<Listing userService={userService} />)
 
     await screen.findByText(user.email)
-    screen.logTestingPlaygroundURL()
 
     expect(screen.getAllByRole('button', { name: '1' })[0]).toBeDisabled()
     expect(screen.getAllByRole('button', { name: '1' })[1]).toBeDisabled()
@@ -62,7 +60,6 @@ describe('ListPage Component', () => {
     const nextButton = screen.getByRole('button', { name: /próxima/i })
     fireEvent.click(nextButton)
     const thirdPageButton = await screen.findByRole('button', { name: /3/i })
-    screen.logTestingPlaygroundURL()
 
     expect(screen.getAllByRole('button', { name: '1' })[0]).toBeEnabled()
     expect(screen.getByRole('button', { name: /anterior/i })).toBeEnabled()
@@ -101,9 +98,8 @@ describe('ListPage Component', () => {
     expect(screen.getAllByRole('button', { name: '50' })[1]).toBeEnabled()
     expect(screen.getByRole('button', { name: /próxima/i })).toBeEnabled()
 
-    const lastPageButton = screen.getAllByRole('button', { name: '50' })
-    console.log('lastPageButton: ', lastPageButton.length)
-    fireEvent.click(lastPageButton[0])
+    const lastPageButton = screen.getByRole('button', { name: '50' })
+    fireEvent.click(lastPageButton)
     await waitFor(() => {
       const antecessorButton = screen.queryByRole('button', { name: /8/i })
       expect(antecessorButton).toBeNull()

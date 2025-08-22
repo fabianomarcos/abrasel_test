@@ -14,7 +14,6 @@ export function useSignUp({ signUpService }: SignUpProps) {
 
   const signUp = async ({ email, name, password }: IBodySignUp) => {
     const [data, error] = await signUpService.signUp({ email, name, password })
-    console.log('error: ', error)
 
     if (error) {
       const errorMessage = error?.message.includes('Some fields are invalids:')

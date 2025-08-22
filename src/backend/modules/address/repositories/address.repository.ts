@@ -12,7 +12,6 @@ export class AddressRepository implements IAddressRepository {
   }
 
   async update(data: AddressOrm, address_id: string): Promise<Address | null> {
-    console.log('data: ', data)
     const address = await prisma.address.update({
       where: { id: address_id },
       data,
