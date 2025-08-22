@@ -1,4 +1,6 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+const config = {
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       screens: {
@@ -6,4 +8,7 @@ module.exports = {
       },
     },
   },
+  plugins: [],
 }
+
+export default config
