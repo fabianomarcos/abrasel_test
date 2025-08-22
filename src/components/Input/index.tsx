@@ -1,5 +1,4 @@
 import { InputHTMLAttributes } from 'react'
-import { IconBaseProps } from 'react-icons'
 import { FieldError } from 'react-hook-form'
 
 import { Tooltip } from '../Tooltip'
@@ -10,11 +9,18 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label?: string
   register?: ReturnType<typeof registerField>
-  icon?: React.ComponentType<IconBaseProps>
+  icon?: React.ReactElement
   errors?: FieldError
 }
 
-export const Input = ({ name, label, register, errors, ...props }: IProps) => {
+export const Input = ({
+  name,
+  label,
+  register,
+  errors,
+  icon: Icon,
+  ...props
+}: IProps) => {
   const TooltipError = (
     <Tooltip title={errors?.message || ''}>
       <Info size={40} color="red" strokeWidth={1.2} />
@@ -48,6 +54,12 @@ export const Input = ({ name, label, register, errors, ...props }: IProps) => {
           className={`flex h-11 w-full rounded-lg border px-2 py-2 transition-all outline-none ${borderClass} `}
           onChange={props.onChange || register?.onChange}
         />
+
+        {Icon && !errors?.message && (
+          <div className="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer">
+            {Icon}
+          </div>
+        )}
 
         <div className={`transition-opacity duration-500 ${opacityClass}`}>
           {TooltipError}

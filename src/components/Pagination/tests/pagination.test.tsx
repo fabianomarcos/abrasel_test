@@ -30,7 +30,7 @@ describe('Pagination Component', () => {
       screen.getByRole('button', { name: /anterior/i }),
     ).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /próxima/i })).toBeInTheDocument()
-    screen.logTestingPlaygroundURL()
+    // screen.logTestingPlaygroundURL()
     expect(screen.getAllByText('1')).toHaveLength(2)
     expect(screen.getAllByText('...')).toHaveLength(2)
     expect(screen.getByText('2')).toBeInTheDocument()

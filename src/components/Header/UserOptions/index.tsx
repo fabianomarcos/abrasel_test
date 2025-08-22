@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 
 import { ROUTES } from '@/routes'
 import { userStore } from '@/stores/user-store'
-import { LogOut, User } from '@/components/Icons'
+import { LogOut, User, Users } from '@/components/Icons'
 import { useSignOut } from '../hooks/use-sign-out'
 
 interface LiProps extends React.HTMLAttributes<HTMLLIElement> {
@@ -39,7 +39,7 @@ export function UserOptions() {
 
       {isAdim && (
         <Li onClick={redirectToListUsers}>
-          <User size={24} />
+          <Users size={24} />
           <span>Usuários</span>
         </Li>
       )}

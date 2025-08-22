@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { useState } from 'react'
 
 import { ROUTES } from '@/routes'
 import { loginFormSchema } from '@/schemas/login-form-schema'
@@ -10,12 +11,16 @@ import { Button } from '@/components/Button'
 import { Loader } from '@/components/Loader'
 import { useSignIn } from './hooks/use-sign-in'
 import { SignInService } from '@/services/sign-in'
+import { Email, PasswordIcon } from '@/components/Icons'
 
 const signInService = new SignInService()
 
 export default function LoginPage() {
+  const [showPassword, setShowPassword] = useState(false)
   const { register, errors, handleSubmit, isSubmitting } =
     useValidateSchema(loginFormSchema)
+
+  const togglePassword = () => setShowPassword((prev) => !prev)
 
   const { signIn } = useSignIn({ signInService })
 
@@ -36,14 +41,16 @@ export default function LoginPage() {
               name="email"
               errors={errors.email}
               label="E-mail"
+              icon={<Email />}
             />
             <Input
               placeholder="Insira a sua senha"
               name="password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               register={{ ...register('password') }}
               errors={errors.password}
               label="Senha"
+              icon={PasswordIcon(showPassword, togglePassword)}
             />
             <Button type="submit" loading={isSubmitting}>
               Entrar
