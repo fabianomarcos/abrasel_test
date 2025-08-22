@@ -43,21 +43,25 @@ export function Pagination({ page, perPage, count, setCurrentPage }: IProps) {
         <span className="text-white">Anterior</span>
       </button>
 
-      <button
-        onClick={() => goToSelectedPage(1)}
-        disabled={disableButton(1)}
-        className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
-      >
-        1
-      </button>
+      {last !== 1 && (
+        <button
+          onClick={() => goToSelectedPage(1)}
+          disabled={disableButton(1)}
+          className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
+        >
+          1
+        </button>
+      )}
 
-      <button
-        onClick={() => goToSelectedPage(2)}
-        disabled={disableButton(2)}
-        className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
-      >
-        2
-      </button>
+      {last > 1 && (
+        <button
+          onClick={() => goToSelectedPage(2)}
+          disabled={disableButton(2)}
+          className="hidden cursor-pointer border border-gray-300 bg-gray-900 px-4 py-2 text-white disabled:opacity-50 sm:block"
+        >
+          2
+        </button>
+      )}
 
       <span className="btn-xs hidden border border-gray-300 bg-gray-900 px-4 py-2 text-white sm:block">
         ...

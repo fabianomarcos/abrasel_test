@@ -1,24 +1,31 @@
-import { UserServiceContract } from '@/services/user/contracts'
-import { useDeleteUser } from '../hooks/use-delete-user'
-import { useGetUsers } from '../hooks/use-get-users'
 import { useState } from 'react'
-import { Loader } from '@/components/Loader'
 import { FiEdit, FiTrash } from 'react-icons/fi'
-import { UpdateFormSchemaType } from '@/schemas/update-form-schema'
-import { Modal } from './modal'
-import { Pagination } from '@/components/Pagination'
-import { useUpdateUser } from '../../profile/hooks/use-update-user'
-import { Toast } from '@/components/Toast'
-import { ERRORS } from '@/translator'
 
+import { useGetUsers } from '../hooks/use-get-users'
+import { useDeleteUser } from '../hooks/use-delete-user'
+import { UserServiceContract } from '@/services/user/contracts'
+import { useUpdateUser } from '../../profile/hooks/use-update-user'
+
+import { ERRORS } from '@/translator'
+import { PAGE_OPTIONS } from '@/utils/constants'
+import { UpdateFormSchemaType } from '@/schemas/update-form-schema'
+
+import { Modal } from './modal'
+import { Toast } from '@/components/Toast'
+import { Loader } from '@/components/Loader'
+import Dropdown from '@/components/Dropdown'
+import { Pagination } from '@/components/Pagination'
 type Props = {
   userService: UserServiceContract
 }
 
 export function Listing({ userService }: Props) {
   const [page, setPage] = useState(1)
+  const [perPage, setPerPage] = useState(2)
   const [editUser, setEditUser] = useState({} as UpdateFormSchemaType)
   const [showModal, setShowModal] = useState(false)
+
+  const onChangePerPage = (perPage: number) => setPerPage(perPage)
 
   const {
     deleteUser,
@@ -33,7 +40,7 @@ export function Listing({ userService }: Props) {
   const { error, isPending, users } = useGetUsers({
     userService,
     page,
-    perPage: 10,
+    perPage,
   })
 
   if (errorDelete) {
@@ -46,7 +53,18 @@ export function Listing({ userService }: Props) {
 
   return (
     <div className="lg:6 mx-auto max-w-6xl px-2 py-4 sm:px-2">
-      <h1 className="mb-4 text-2xl font-semibold">Usuários</h1>
+      <div className="mb-4 flex justify-between">
+        <h1 className="text-2xl font-semibold">Usuários</h1>
+        <div className="flex items-center gap-2">
+          <span className="hidden sm:block">Quantidade por página</span>
+          <span className="hidden sm:block">{perPage}</span>
+          <Dropdown
+            options={PAGE_OPTIONS}
+            placeholder="Escolha uma opção"
+            onChange={(val) => onChangePerPage(+val)}
+          />
+        </div>
+      </div>
 
       <div className="overflow-x-auto rounded-lg border">
         <table className="w-full border-collapse text-sm">
@@ -134,7 +152,7 @@ export function Listing({ userService }: Props) {
         page={page}
         count={users?.total || 1}
         setCurrentPage={setPage}
-        perPage={users?.perPage || 2}
+        perPage={perPage}
       />
     </div>
   )

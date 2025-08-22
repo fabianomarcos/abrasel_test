@@ -10,7 +10,7 @@ export class FakeUserService implements UserServiceContract {
 
   async list({
     page = 1,
-    perPage = 1,
+    perPage = 10,
   }: {
     page: number
     perPage: number
@@ -24,7 +24,6 @@ export class FakeUserService implements UserServiceContract {
   > {
     const data = this.users
     const users = { data, total: 100, page, perPage }
-    console.log('users fake: ', users.data[0])
     return [{ users }, null]
   }
 
