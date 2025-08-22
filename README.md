@@ -3,6 +3,13 @@ Você consegue acompanhar em produção pela url https://abrasel-test.vercel.app
 Usuário admin@admin.com
 Senha   Admin@0904 
 
+Para rodar os testes: 
+Obs.: Feito apenas em dois componentes para demonstração.
+```bash
+pnpm run test
+pnpm run test:ui
+```
+
 Para rodar localmente rode os seguintes comandos abaixo: 
 ```bash
 git checkout dev
