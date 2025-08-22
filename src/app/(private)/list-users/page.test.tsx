@@ -98,7 +98,7 @@ describe('ListPage Component', () => {
     expect(screen.getAllByRole('button', { name: '50' })[1]).toBeEnabled()
     expect(screen.getByRole('button', { name: /próxima/i })).toBeEnabled()
 
-    const lastPageButton = screen.getByRole('button', { name: '50' })
+    const [lastPageButton] = screen.getAllByRole('button', { name: '50' })
     fireEvent.click(lastPageButton)
     await waitFor(() => {
       const antecessorButton = screen.queryByRole('button', { name: /8/i })
