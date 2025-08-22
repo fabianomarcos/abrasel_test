@@ -1,22 +1,28 @@
 'use client'
+import { useEffect, useState } from 'react'
+
 import { Input } from '@/components/Input'
-import { useValidateSchema } from '@/hooks/use-schema-validator'
 import { Loader } from '@/components/Loader'
 import { Button } from '@/components/Button'
-import { Save } from '@/components/Icons'
+import { PasswordIcon, Save } from '@/components/Icons'
+
 import { UserService } from '@/services/user'
+import { userStore } from '@/stores/user-store'
 import { useUpdateUser } from '../hooks/use-update-user'
 import { updateFormSchema } from '@/schemas/update-form-schema'
-import { userStore } from '@/stores/user-store'
-import { useEffect } from 'react'
+import { useValidateSchema } from '@/hooks/use-schema-validator'
 
 const userService = new UserService()
 
 export const ProfileForm = () => {
-  const { update } = useUpdateUser({ userService })
   const { user } = userStore()
+  const { update } = useUpdateUser({ userService })
+  const [showPassword, setShowPassword] = useState(false)
+
   const { register, errors, handleSubmit, isSubmitting, setValue } =
     useValidateSchema(updateFormSchema)
+
+  const togglePassword = () => setShowPassword((prev) => !prev)
 
   useEffect(() => {
     setValue('name', user?.name || '', { shouldValidate: true })
@@ -53,17 +59,19 @@ export const ProfileForm = () => {
           name="current_password"
           label="Senha atual"
           placeholder="Digite sua senha atual"
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           errors={errors?.current_password}
           register={{ ...register('current_password') }}
+          icon={PasswordIcon(showPassword, togglePassword)}
         />
         <Input
           name="password"
           label="Nova senha"
           placeholder="Digite sua nova senha"
           errors={errors?.password}
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           register={{ ...register('password') }}
+          icon={PasswordIcon(showPassword, togglePassword)}
         />
       </div>
 
