@@ -42,23 +42,33 @@ Validação
 
 <img width="842" height="619" alt="image" src="https://github.com/user-attachments/assets/16949b61-e422-401c-84c8-c570a7a84b64" />
 
+
+
 Listar usuários, admim editar e deletar
 
 <img width="1362" height="381" alt="image" src="https://github.com/user-attachments/assets/714863dc-4a69-4ab8-abb1-8b02a100c2ff" />
+
+
 
 Visualizar e editar dados
 
 Perfil
 <img width="1821" height="438" alt="image" src="https://github.com/user-attachments/assets/44eee4bb-b6d5-48b8-ac0b-8ed44e566f70" />
 
+
+
 Endereço
 <img width="1825" height="518" alt="image" src="https://github.com/user-attachments/assets/0a474c59-ee5e-4d97-9fec-3010583c6445" />
+
+
 
 PERFIL ADMIN
 
 <img width="707" height="102" alt="image" src="https://github.com/user-attachments/assets/9684cf86-9caa-4f87-81f6-b47427b353b9" />
 
 <img width="450" height="293" alt="image" src="https://github.com/user-attachments/assets/930abc2c-c586-4d0c-a2ac-79c3d77ba6c6" />
+
+
 
 PERFIL USER
 
