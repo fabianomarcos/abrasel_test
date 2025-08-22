@@ -24,11 +24,11 @@ export default function Dropdown({
   }
 
   return (
-    <div className="cursor-pointer">
+    <div>
       <select
         value={selected}
         onChange={(e) => handleChange(e.target.value)}
-        className="w-full rounded-xl border border-gray-300 p-2 text-gray-700 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+        className="w-full cursor-pointer rounded-xl border border-gray-300 p-2 text-gray-700 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none"
       >
         <option value="" disabled>
           {placeholder}
