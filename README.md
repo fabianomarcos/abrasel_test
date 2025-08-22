@@ -43,7 +43,8 @@ Validação
 <img width="842" height="619" alt="image" src="https://github.com/user-attachments/assets/16949b61-e422-401c-84c8-c570a7a84b64" />
 
 Listar usuários, admim editar e deletar
-<img width="1224" height="574" alt="image" src="https://github.com/user-attachments/assets/c2581597-ea37-42d1-b88c-85a3b92d3952" />
+
+<img width="1362" height="381" alt="image" src="https://github.com/user-attachments/assets/714863dc-4a69-4ab8-abb1-8b02a100c2ff" />
 
 Visualizar e editar dados
 
